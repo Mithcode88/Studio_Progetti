@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <title>Pagina della form</title>
+</head>
+<body>
+
+
+<form>
+    <h1>Ciao <span th:text="${username}"></span></h1>
+    <input placeholder="Name" type="text" value="" required>
+    <input placeholder="Email address" type="email" onblur="this.setAttribute('value', this.value);" value="" required>
+    <span class="validation-text">Please enter a valid email address.</span>
+    <input placeholder="Location" type="text" value="" required>
+    <div class="flex">
+        <textarea placeholder="Message" rows="1" required></textarea>
+    </div>
+    <button>Send</button>
+</form>
+
+
+</body>
+</html>
