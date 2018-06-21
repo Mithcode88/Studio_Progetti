@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/css/theme.css}">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <title>Pagina della form</title>
+</head>
+<title th:text="${'Contatto - ' + contact.firstName + ' ' + contact.lastName}"></title>
+<body>
+<div>
+    <h2 th:text="${contact.firstName + ' ' + contact.lastName}"></h2>
+    <div>
+        <strong>Telefono: </strong> <span th:text="${contact.phone}"></span>
+    </div>
+</div>
+</body>
+</html>
