@@ -54,6 +54,26 @@ textarea {
     resize: none;
     overflow: hidden;
 }
+input.error{
+    font: inherit;
+    font-size: 0.8em;
+    margin: 28px 25px 10px;
+    width: 400px;
+    display: block;
+    border: none;
+    padding: 20px 0 10px;
+    border-bottom: solid 1px darkred;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, darkred 4%);
+    background-position: -400px 0;
+    background-size: 400px 100%;
+    background-repeat: no-repeat;
+    transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    resize: none;
+    overflow: hidden;
+}
+.text-danger{
+    color: darkred;
+}
 input:focus::-webkit-input-placeholder,
 textarea:focus::-webkit-input-placeholder {
     color: #03A9F4;

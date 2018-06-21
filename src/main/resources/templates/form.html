@@ -9,9 +9,19 @@
 
 <form th:action="@{/contacts/new}" th:object="${contactForm}" method="post">
     <h1>Nuovo contatto</h1>
-    <input th:field="*{firstName}" placeholder="Nome" type="text" value="" required>
-    <input th:field="*{lastName}" placeholder="Cognome" type="text" value="" required>
-    <input th:field="*{phone}" placeholder="Telefono" type="text" value="" required>
+
+
+    <!--<div th:classappend="${#fields.hasErrors('firstName')}? 'error' ">-->
+        <!--<input th:field="*{firstName}" placeholder="Nome" type="text" value="" required>-->
+        <!--<div th:if="${#fields.hasErrors('firstName')}" class="error">-->
+            <!--<span th:errors="*{firstName}" class="text-danger"></span>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <input th:field="*{firstName}" placeholder="Nome" type="text" value="" >
+    <input th:field="*{lastName}" placeholder="Cognome" type="text" value="">
+    <input th:field="*{phone}" placeholder="Telefono" type="tel" value="">
+    <input th:field="*{email}" placeholder="Email" type="email" value="">
 
     <button type="submit">Send</button>
 </form>

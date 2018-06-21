@@ -1,10 +1,27 @@
 package programma_test.Model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class ContactForm {
 
+    @NotEmpty
+    @Size(max = 50)
     private String firstName;
+
+    @NotEmpty
+    @Size(max = 100)
     private String lastName;
+
+    @NotEmpty
+    @Size(max = 20)
     private String phone;
+
+    @NotEmpty
+    @Size(max = 100)
+    @Email
+    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -28,5 +45,13 @@ public class ContactForm {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
