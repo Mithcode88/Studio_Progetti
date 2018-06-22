@@ -2,6 +2,7 @@ package programma_test.Controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import programma_test.Model.ContactDetails;
 import programma_test.Model.ContactForm;
+import programma_test.services.ContactService;
 
 import javax.validation.Valid;
 
@@ -19,6 +21,13 @@ import javax.validation.Valid;
 public class Form {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    private ContactService contactService;
+
+    @Autowired
+    public Form(ContactService contactService) {
+        this.contactService = contactService;
+    }
 
     @GetMapping("/new")
     public String contactForm(Model model) {
@@ -35,6 +44,8 @@ public class Form {
             return "form";
         }
 
+        contactService.save(contactForm);
+
         ContactDetails details = new ContactDetails();
         details.setFirstName(contactForm.getFirstName());
         details.setLastName(contactForm.getLastName());
@@ -43,6 +54,12 @@ public class Form {
 
         model.addAttribute("contact", details);
         return "riepilogo";
+    }
+
+    @GetMapping("/all")
+    public String allContacts(Model model){
+        model.addAttribute("contacts", contactService.getList());
+        return "contact-list";
     }
 
 }

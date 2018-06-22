@@ -1,18 +1,18 @@
-package programma_test.Model;
+package programma_test.domain;
 
-public class ContactDetails {
+public class Contact {
 
-    private Long id;
+    private long id;
     private String firstName;
     private String lastName;
     private String phone;
     private String email;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
