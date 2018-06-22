@@ -9,12 +9,28 @@
 
 <form th:action="@{/contacts/new}" th:object="${contactForm}" method="post">
     <h1>Nuovo contatto</h1>
-    <input th:field="*{firstName}" placeholder="Nome" type="text" value="" required>
-    <input th:field="*{lastName}" placeholder="Cognome" type="text" value="" required>
-    <input th:field="*{phone}" placeholder="Telefono" type="text" value="" required>
-    <!--<div class="flex">-->
-    <!--<textarea placeholder="Message" rows="1" required></textarea>-->
-    <!--</div>-->
+
+
+    <input th:field="*{firstName}" th:if="${#fields.hasErrors('firstName')}" class="error" placeholder="Nome"
+           type="text" value="">
+    <input th:field="*{firstName}" th:unless="${#fields.hasErrors('firstName')}" placeholder="Nome" type="text"
+           value="">
+
+    <input th:field="*{lastName}" th:if="${#fields.hasErrors('lastName')}" class="error" placeholder="Cognome"
+           type="text" value="">
+    <input th:field="*{lastName}" th:unless="${#fields.hasErrors('lastName')}" placeholder="Cognome" type="text"
+           value="">
+
+    <input th:field="*{phone}" th:if="${#fields.hasErrors('phone')}" class="error" placeholder="Telefono" type="tel"
+           value="">
+    <input th:field="*{phone}" th:unless="${#fields.hasErrors('phone')}" placeholder="Telefono" type="tel"
+           value="">
+
+    <input th:field="*{email}" th:if="${#fields.hasErrors('email')}" class='error' placeholder="Email" type="email"
+           value="">
+    <input th:field="*{email}" th:unless="${#fields.hasErrors('email')}" placeholder="Email" type="email"
+           value="">
+
     <button type="submit">Send</button>
 </form>
 

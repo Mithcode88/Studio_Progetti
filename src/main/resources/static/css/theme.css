@@ -62,8 +62,8 @@ input.error{
     display: block;
     border: none;
     padding: 20px 0 10px;
-    border-bottom: solid 1px darkred;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, darkred 4%);
+    border-bottom: solid 1px red;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, red 4%);
     background-position: -400px 0;
     background-size: 400px 100%;
     background-repeat: no-repeat;
@@ -71,21 +71,23 @@ input.error{
     resize: none;
     overflow: hidden;
 }
-.text-danger{
-    color: darkred;
-}
+
 input:focus::-webkit-input-placeholder,
 textarea:focus::-webkit-input-placeholder {
     color: #03A9F4;
 }
-input:focus, input:valid,
+input.error:focus::-webkit-input-placeholder,
+textare.error:focus::-webkit-input-placeholder {
+    color: red;
+}
+input:focus,
 textarea:focus,
 textarea:valid {
     box-shadow: none;
     outline: none;
     background-position: 0 0;
 }
-input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder,
+input:focus::-webkit-input-placeholder,
 textarea:focus::-webkit-input-placeholder,
 textarea:valid::-webkit-input-placeholder {
     font-size: 0.8em;
@@ -97,6 +99,12 @@ textarea:valid::-webkit-input-placeholder {
 
 input[type="email"] {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #03A9F4 4%);
+    background-position: -400px 0;
+    background-repeat: no-repeat;
+    transition: border-bottom 0.3s ease, background 0.3s ease;
+}
+input.error[type="email"] {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, red 4%);
     background-position: -400px 0;
     background-repeat: no-repeat;
     transition: border-bottom 0.3s ease, background 0.3s ease;
@@ -122,8 +130,14 @@ input[type="email"]:not([value=""])::-webkit-input-placeholder {
 input[type="email"]:not([value=""]):focus::-webkit-input-placeholder {
     color: #03A9F4;
 }
+input.error[type="email"]:not([value=""]):focus::-webkit-input-placeholder {
+    color: red;
+}
 input[type="email"]:not([value=""]):focus:not(:valid)::-webkit-input-placeholder {
     color: #E91E63;
+}
+input.error[type="email"]:not([value=""]):focus:not(:valid)::-webkit-input-placeholder {
+    color: red;
 }
 input[type="email"]:focus {
     background-position: 0 0;
@@ -139,6 +153,9 @@ input[type="email"]:not(:focus):not(:valid):not([value=""]) {
 }
 input[type="email"]:not(:focus):not(:valid):not([value=""])::-webkit-input-placeholder {
     color: #E91E63;
+}
+input.error[type="email"]:not(:focus):not(:valid):not([value=""])::-webkit-input-placeholder {
+    color: red;
 }
 input[type="email"]:not(:focus):not(:valid):not([value=""]) ~ span.validation-text {
     visibility: visible;
