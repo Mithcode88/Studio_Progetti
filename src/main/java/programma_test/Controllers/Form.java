@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import programma_test.Model.ContactDetails;
 import programma_test.Model.ContactForm;
 import programma_test.services.ContactService;
@@ -56,8 +53,21 @@ public class Form {
         return "riepilogo";
     }
 
+    @GetMapping("/{id}")
+    public String contactById(@PathVariable("id") Long id, Model model){
+        ContactDetails contact = contactService.getDetailsById(id);
+
+        if(contact == null){
+            return "redirect:/";
+        }
+
+        model.addAttribute("contact", contact);
+        return "riepilogo";
+    }
+
     @GetMapping("/all")
     public String allContacts(Model model){
+
         model.addAttribute("contacts", contactService.getList());
         return "contact-list";
     }

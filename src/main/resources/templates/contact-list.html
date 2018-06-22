@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8"/>
     <title>Lista contatti</title>
-    <link rel="stylesheet" th:href="@{/css/theme.css}"/>
 </head>
 <body>
 <div class="list-container">
@@ -15,7 +14,7 @@
     <ul th:if="${not #lists.isEmpty(contacts)}" class="list-group">
         <li th:each="c : ${contacts}" class="list-group-item"><span
                 class="glyphicon glyphicon-user" aria-hidden="true"></span> <a
-                th:href="@{'/contacts/' + ${c.id}}" th:text="${c.name}"></a></li>
+                th:href="@{'/contacts/' + ${c.id}}" th:text="${c.id}+' - '+${c.name}"></a></li>
     </ul>
 </div>
 <nav>
